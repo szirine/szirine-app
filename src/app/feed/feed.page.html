@@ -1,0 +1,40 @@
+<ion-header no-border class="bar bar-subheader">
+	<ion-toolbar mode="ios">
+	  <ion-title>
+	  Feed
+	  </ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list lines="none">
+	  <ion-item *ngFor="let a of articles; let i = index" (click)="openArticle(i)">
+		<ion-card>
+		  <ion-card-header>
+			<ion-grid>
+			  <ion-row>
+				<ion-col size="3"  class="date-label">
+				  <ion-row class="date-label-month">{{ a.published.month }}</ion-row>
+				  <ion-row class="date-label-day">{{ a.published.day }}</ion-row>
+				  <ion-row class="date-label-year">{{ a.published.year }}</ion-row>
+				</ion-col>
+				<ion-col size="9">
+				  <ion-row>
+					<ion-card-title>{{ a.title }}</ion-card-title>
+				  </ion-row>
+				  <ion-row>
+					<ion-card-subtitle>{{ a.subtitle }}</ion-card-subtitle>
+				  </ion-row>
+				</ion-col>
+			  </ion-row>
+			</ion-grid>
+		  </ion-card-header>
+		  <ion-img [src]="a.thumbnail"></ion-img>
+		  <ion-card-content>
+		  <p>{{ a.text }} <ion-icon name="arrow-forward"></ion-icon></p>
+		  </ion-card-content>
+		</ion-card>
+	  </ion-item>
+	</ion-list>
+	
+</ion-content>

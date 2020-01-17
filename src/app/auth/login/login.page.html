@@ -1,0 +1,30 @@
+<ion-header no-border>
+	<ion-toolbar mode="ios">
+	  <ion-title>Login</ion-title>
+	  <ion-buttons slot="start">
+		<ion-button (click)="goHome()">
+		  <ion-icon slot="icon-only" name="close"></ion-icon>
+		</ion-button>
+	  </ion-buttons>
+	</ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+	<ion-grid>
+	  <ion-row justify-content-center>
+		<ion-col align-self-center>
+		  <ion-item>
+			<ion-label stacked>Username</ion-label>
+			<ion-input [(ngModel)]="username"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label stacked>Password</ion-label>
+			<ion-input type="password" [(ngModel)]="password"></ion-input>
+		  </ion-item>
+		  <ion-button (click)="login()" expand="block">
+		  Login
+		  </ion-button>
+		  <ion-button expand="block" color="secondary" routerLink="/register" routerDirection="forward">Register</ion-button>
+		</ion-col>
+	  </ion-row>
+	</ion-grid>
+  </ion-content>
