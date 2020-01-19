@@ -39,7 +39,27 @@ const routes: Routes = [
 			  canActivate: [AuthGuard]
           }
         ]
-      },
+	  },
+	  {
+		path: 'articles/:id',
+		children: [
+		{
+		  path: '',
+		  loadChildren: () =>
+	  import('../views/article/article.module').then(m =>   m.ArticlePageModule)
+		}
+		]
+	  },
+	  {
+		path: 'new-article',
+		children: [
+		{
+		  path: '',
+		  loadChildren: () =>
+	  import('../views/article/article.module').then(m => m.ArticlePageModule)
+		}
+		]
+	  },
       {
         path: '',
         redirectTo: '/tabs/feed',

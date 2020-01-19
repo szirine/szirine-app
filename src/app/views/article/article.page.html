@@ -1,0 +1,11 @@
+<ion-header no-border>
+	<ion-toolbar mode="ios">
+	  <ion-title>
+	  View Article
+	  </ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<app-article-detail [article]="article" (saveArticleEvent)="saveArticle($event)" (deleteArticleEvent)="deleteArticle($event)"></app-article-detail>
+  </ion-content>

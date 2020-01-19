@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'article',
+    loadChildren: () => import('./views/article/article.module').then( m => m.ArticlePageModule)
   }
 ];
 @NgModule({
