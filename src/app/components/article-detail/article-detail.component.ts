@@ -29,8 +29,18 @@ ngOnInit() {
 }
 
 saveArticle() {
+  if ( !this.isValidForm() ) {
+	  return false;
+  }
   this.saveArticleEvent.emit(this.article);
   this.router.navigate(['/tabs/feed']);
+}
+
+isValidForm() {
+	if ( _.isUndefined(this.article.title) ) {
+		console.log(`Invalid article.name: ${ this.article.title }`);
+		return false;
+	}
 }
 
 editArticle() {

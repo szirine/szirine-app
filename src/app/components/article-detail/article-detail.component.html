@@ -5,7 +5,7 @@
 	  </ion-fab-button>
 	</ion-fab>
 
-	<form onsubmit="processForm(event)">
+	<form>
 	  <ion-list>
 		<ion-item>
 			<ion-label position="stacked">Id</ion-label>
@@ -26,7 +26,7 @@
 		  <ion-label position="stacked">Subtitle</ion-label>
 		  <ion-input required type="text" [(ngModel)]="article.subtitle" [disabled]="!isEdit" name="subtitle"></ion-input>
 		</ion-item>
-  <ion-item>
+  		<ion-item>
 		  <ion-label position="stacked">Text</ion-label>
 		  <ion-textarea
 		   [disabled]="!isEdit" name="text"
