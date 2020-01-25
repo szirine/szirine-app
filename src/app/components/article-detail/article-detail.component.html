@@ -1,10 +1,11 @@
+<div *ngIf="article">
 	<ion-fab vertical="top" horizontal="end" slot="fixed">
 	  <ion-fab-button>
 		<ion-icon name="create" (click)="editArticle()"></ion-icon>
 	  </ion-fab-button>
 	</ion-fab>
 
-	<form onsubmit="processForm(event)">
+	<form (ngSubmit))="processForm(event)">
 	  <ion-list>
 		<ion-item>
 			<ion-label position="stacked">Id</ion-label>
@@ -45,3 +46,4 @@
 	  </ion-fab>
 
 	</form>
+</div>

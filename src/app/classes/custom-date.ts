@@ -11,6 +11,5 @@ constructor() {
 	this.day = d.getDay();
 	this.year = d.getFullYear();
 	this.monthName = d.toLocaleString('default', { month: 'long' });
-	console.log(`monthName: ${this.monthName}`);
 }
 }

@@ -15,7 +15,7 @@ export class ArticleDetailComponent implements OnInit {
 @Input() article: Article;
 @Output() saveArticleEvent = new EventEmitter<Article>();
 @Output() deleteArticleEvent = new EventEmitter<Article>();
-isEdit: boolean = false;
+isEdit: boolean;
 
 constructor(
   public alertController: AlertController,
@@ -23,19 +23,13 @@ constructor(
 ) { }
 
 ngOnInit() {
-  console.log('child.ngOnInit');
   if ( _.isUndefined(this.article.id) ) {
-    console.log(`child.articleId: ${this.article.id}`);
     this.isEdit = true;
   }
 }
 
 saveArticle() {
-  console.log(`1. child.saveArticle`);
   this.saveArticleEvent.emit(this.article);
-  console.log(`3. child.saveArticle`);
-  this.isEdit = false;
-  this.article = null;
   this.router.navigate(['/tabs/feed']);
 }
 
@@ -56,13 +50,12 @@ presentConfirm() {
       text: 'Cancel',
       role: 'cancel',
       handler: () => {
-        console.log('Cancel clicked');
+        console.log('Cancel Delete');
       }
     },
     {
       text: 'Delete',
       handler: () => {
-        console.log('Confirm delete');
         this.deleteArticleEvent.emit(this.article);
         this.router.navigate(['/tabs/feed']);
       }
