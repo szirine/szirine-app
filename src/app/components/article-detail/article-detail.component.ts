@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Article } from '../../classes/article';
 import * as _ from 'lodash';
 
@@ -10,30 +9,33 @@ import * as _ from 'lodash';
   styleUrls: ['./article-detail.component.scss'],
 })
 
-export class ArticleDetailComponent implements OnInit {
+export class ArticleDetailComponent {
 
 @Input() article: Article;
+@Input() isEdit: boolean;
+
 @Output() saveArticleEvent = new EventEmitter<Article>();
+@Output() editArticleEvent = new EventEmitter<Article>();
 @Output() deleteArticleEvent = new EventEmitter<Article>();
-isEdit: boolean;
+
 
 constructor(
-  public alertController: AlertController,
-  private router: Router
+  public alertController: AlertController
 ) { }
 
-ngOnInit() {
-  if ( _.isUndefined(this.article.id) ) {
-    this.isEdit = true;
-  }
+saveArticle() {
+	if ( !this.isValidForm() ) {
+		return false;
+	}
+	this.saveArticleEvent.emit(this.article);
 }
 
-saveArticle() {
-  if ( !this.isValidForm() ) {
-	  return false;
-  }
-  this.saveArticleEvent.emit(this.article);
-  this.router.navigate(['/tabs/feed']);
+editArticle() {
+	this.editArticleEvent.emit(this.article);
+}
+
+deleteArticle() {
+  this.presentConfirm();
 }
 
 isValidForm() {
@@ -41,14 +43,11 @@ isValidForm() {
 		console.log(`Invalid article.name: ${ this.article.title }`);
 		return false;
 	}
-}
-
-editArticle() {
-  this.isEdit = true;
-}
-
-deleteArticle() {
-  this.presentConfirm();
+	if ( _.isEmpty(this.article.title) ) {
+		console.log(`Invalid article.name: ${ this.article.title }`);
+		return false;
+	}
+	return true;
 }
 
 presentConfirm() {
@@ -67,7 +66,6 @@ presentConfirm() {
       text: 'Delete',
       handler: () => {
         this.deleteArticleEvent.emit(this.article);
-        this.router.navigate(['/tabs/feed']);
       }
     }
     ]

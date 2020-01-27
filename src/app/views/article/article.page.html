@@ -7,5 +7,5 @@
 </ion-header>
 
 <ion-content>
-	<app-article-detail [article]="article" (saveArticleEvent)="saveArticle($event)" (deleteArticleEvent)="deleteArticle($event)" ></app-article-detail>
+	<app-article-detail [article]="article" [isEdit]="isEdit" (saveArticleEvent)="saveArticle($event)" (editArticleEvent)="editArticle($event)" (deleteArticleEvent)="deleteArticle($event)" ></app-article-detail>
   </ion-content>
