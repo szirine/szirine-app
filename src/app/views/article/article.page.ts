@@ -30,6 +30,8 @@ ionViewWillEnter() {
 		// new article is created
 		this.isEdit = true;
 		this.article = new Article();
+	} else {
+		this.article = this.articlesService.getArticle(this.articleId);
 	}
 }
 
@@ -40,20 +42,13 @@ ionViewWillLeave() {
 }
 
 ngOnInit() {
-	if ( _.isEmpty(this.articleId) ) {
-	  const created = new CustomDate();
-	  this.article = new Article(created);
-	  this.isEdit = true;
-	} else {
-	  this.article = this.articlesService.getArticle(this.articleId);
-	}
+
 }
 
 saveArticle(value: Article) {
 	if ( _.isEmpty(this.articleId) ) {
 		this.articlesService.createArticle(value);
 	}
-	this.isEdit = false;
 	this.router.navigate(['/tabs/feed']);
 }
 

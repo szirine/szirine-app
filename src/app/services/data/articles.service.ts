@@ -36,7 +36,6 @@ deleteArticle(id: any): any {
 nextArticleId(): number {
   const maxArticleId = Number(this.articles.reduce( (max, article) => ( article.id > max ) ? article.id : max, this.articles[0].id ) );
   const newArticleId = ( maxArticleId + 1);
-  console.log(newArticleId);
   return newArticleId;
 }
 

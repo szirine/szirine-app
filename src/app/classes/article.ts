@@ -18,7 +18,7 @@ text: string;
 constructor(created?: CustomDate) {
   if ( _.isEmpty(created) ) {
     this.created = new CustomDate();
-  }else{
+  } else {
     this.created = created;
   }
 }
