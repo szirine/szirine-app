@@ -21,11 +21,10 @@ constructor(
   private route: ActivatedRoute,
   private articlesService: ArticlesService,
   private router: Router
-) {
-  	this.articleId = route.snapshot.params['id'];
-}
+) { }
 
 ionViewWillEnter() {
+	this.articleId = this.route.snapshot.params['id'];
 	if ( _.isUndefined(this.articleId)) {
 		// new article is created
 		this.isEdit = true;
@@ -52,7 +51,7 @@ saveArticle(value: Article) {
 	this.router.navigate(['/tabs/feed']);
 }
 
-editArticle() {
+editArticle(value: Article) {
 	this.isEdit = true;
 }
 
