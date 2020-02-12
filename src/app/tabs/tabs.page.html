@@ -10,7 +10,7 @@
 		<ion-item href="settings" routerDirection="root">Settings</ion-item>
 		<ion-item href="tabs/profile" routerDirection="root">Profile</ion-item>
 		<ion-item (click)="logout()">Logout</ion-item>
-  </ion-list>
+      </ion-list>
 	</ion-content>
   </ion-menu>
   <!-- end header menu definition -->
@@ -20,9 +20,6 @@
 	  <ion-title>
 	  Szirine
 	  </ion-title>
-	  <ion-buttons slot="start">
-		<ion-menu-button autoHide="false"></ion-menu-button>
-	  </ion-buttons>
 	</ion-toolbar>
   </ion-header>
   <!-- end header -->
@@ -33,14 +30,6 @@
 	  <ion-tab-button tab="feed">
 		<ion-icon name="paper"></ion-icon>
 		<ion-label>Feed</ion-label>
-	  </ion-tab-button>
-	  <ion-tab-button tab="chat">
-		<ion-icon name="chatboxes"></ion-icon>
-		<ion-label>Chat</ion-label>
-	  </ion-tab-button>
-	  <ion-tab-button tab="profile">
-		<ion-icon name="person"></ion-icon>
-		<ion-label>Profile</ion-label>
 	  </ion-tab-button>
 	</ion-tab-bar>
   </ion-tabs>

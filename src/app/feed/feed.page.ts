@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../classes/article';
-import { ArticlesService } from '../services/data/articles.service';
+import { SzirineService } from '../services/api/szirine.service';
+import { LongPost } from '../classes/wp/long-post';
 
 @Component({
   selector: 'app-feed',
@@ -10,12 +10,18 @@ import { ArticlesService } from '../services/data/articles.service';
 
 export class FeedPage implements OnInit {
 
-articles: Article[] = [];
+articles: LongPost[] = [];
 
-constructor(private articlesService: ArticlesService) { }
+constructor(
+  private szirineService: SzirineService
+) { }
 
 ngOnInit() {
-  this.articles = this.articlesService.getArticles();
+  const articles = this.szirineService.getPosts().subscribe(
+    (posts: LongPost[] ) => {
+      this.articles = posts;
+    }
+  );
 }
 
 }

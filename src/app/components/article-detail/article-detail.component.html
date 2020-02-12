@@ -1,49 +1,30 @@
 <div *ngIf="article">
-	<ion-fab vertical="top" horizontal="end" slot="fixed">
-	  <ion-fab-button>
-		<ion-icon name="create" (click)="editArticle()"></ion-icon>
-	  </ion-fab-button>
-	</ion-fab>
-
-	<form>
-	  <ion-list>
-		<ion-item>
-			<ion-label position="stacked">Id</ion-label>
-			<ion-input required type="text" [(ngModel)]="article.id" [disabled]="true" name="id"></ion-input>
-		</ion-item>
-		<ion-item>
-		  <ion-img [src]="article.thumbnail" [disabled]="!isEdit" name="thumbnail"></ion-img>
-		</ion-item>
-		<ion-item>
-		  <ion-label position="stacked">Created Date <ion-text color="danger">*</ion-text></ion-label>
-		  <ion-input required type="text" value="{{ article.created.monthName + ' ' + article.created.day + ', ' + article.created.year }}" [disabled]="true" name="created"></ion-input>
-		</ion-item>
-		<ion-item>
-		  <ion-label position="stacked">Title <ion-text color="danger">*</ion-text></ion-label>
-		  <ion-input required type="text" [(ngModel)]="article.title" [disabled]="!isEdit" name="title"></ion-input>
-		</ion-item>
-		<ion-item>
-		  <ion-label position="stacked">Subtitle</ion-label>
-		  <ion-input required type="text" [(ngModel)]="article.subtitle" [disabled]="!isEdit" name="subtitle"></ion-input>
-		</ion-item>
-  		<ion-item>
-		  <ion-label position="stacked">Text</ion-label>
-		  <ion-textarea
-		   [disabled]="!isEdit" name="text"
-		   [(ngModel)]="article.text">
-		  </ion-textarea>
-		</ion-item>
-
-		<ion-item>
-		  <ion-button full round *ngIf="isEdit" (click)="saveArticle()">Save</ion-button>
-		</ion-item>
-		
-	  </ion-list>
-	  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-		<ion-fab-button [disabled]="!isEdit">
-		  <ion-icon name="trash" (click)="deleteArticle()"></ion-icon>
-		</ion-fab-button>
-	  </ion-fab>
-
-	</form>
+<form>
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Id</ion-label>
+    <ion-input required type="text" [(ngModel)]="article.id" disabled name="id"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-img [src]="article.jetpack_featured_media_url" disabled name="jetpack_featured_media_url"></ion-img>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Date</ion-label>
+    <ion-input required type="text" [(ngModel)]="article.date" disabled name="date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input required type="text"   
+      [(ngModel)]="article.title.rendered" disabled name="title"> . 
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Text</ion-label>
+    <ion-textarea
+      disabled name="content"     
+      [innerHTML]="article.content.rendered">
+    </ion-textarea>
+  </ion-item>
+</ion-list>
+</form>
 </div>

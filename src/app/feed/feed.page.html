@@ -1,45 +1,33 @@
 <ion-header no-border class="bar bar-subheader">
-	<ion-toolbar mode="ios">
-	  <ion-title>
-	  Feed
-	  </ion-title>
-	</ion-toolbar>
+  <ion-toolbar mode="ios">
+    <ion-title>
+    Feed
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content>
-	<ion-fab vertical="top" horizontal="end" slot="fixed">
-	  <ion-fab-button>
-		<ion-icon name="add" routerLink="/tabs/new-article"></ion-icon>
-	  </ion-fab-button>
-	</ion-fab>
-	<ion-list lines="none">
-	  <ion-item *ngFor="let a of articles; let i = index">
-		<ion-card routerLink="/tabs/articles/{{ a.id }}" routerDirection="forward">
-		  <ion-card-header>
-			<ion-grid>
-			  <ion-row>
-				<ion-col size="3"  class="date-label">
-					<ion-row class="date-label-month">{{ a.created.monthName }}</ion-row>
-					<ion-row class="date-label-day">{{ a.created.day }}</ion-row>
-					<ion-row class="date-label-year">{{ a.created.year }}</ion-row>
-				</ion-col>
-				<ion-col size="9">
-				  <ion-row>
-					<ion-card-title>{{ a.title }}</ion-card-title>
-				  </ion-row>
-				  <ion-row>
-					<ion-card-subtitle>{{ a.subtitle }}</ion-card-subtitle>
-				  </ion-row>
-				</ion-col>
-			  </ion-row>
-			</ion-grid>
-		  </ion-card-header>
-		  <ion-img [src]="a.thumbnail"></ion-img>
-		  <ion-card-content>
-		  <p>{{ a.text }} <ion-icon name="arrow-forward"></ion-icon></p>
-		  </ion-card-content>
-		</ion-card>
-	  </ion-item>
-	</ion-list>
-	
+  <ion-list lines="none">
+    <ion-item *ngFor="let a of articles; let i = index">
+      <ion-card routerLink="/tabs/articles/{{ a.id }}" routerDirection="forward">
+        <ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3"  class="date-label">
+                <ion-row class="date">{{ a.date }}</ion-row>
+              </ion-col>
+              <ion-col size="9">
+                <ion-row>
+                  <ion-card-title>{{ a.title.rendered }}</ion-card-title>
+                </ion-row>
+              </ion-col> 
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        <ion-img [src]="a.jetpack_featured_media_url"></ion-img>
+        <ion-card-content>
+          <div [innerHTML]="a.excerpt.rendered"></div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -18,28 +18,6 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'chat',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../chat/chat.module').then(m => m.ChatPageModule),
-			  canActivate: [AuthGuard]
-          }
-        ]
-      },
-      {
-        path: 'profile',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../profile/profile.module').then(m => m.ProfilePageModule),
-			  canActivate: [AuthGuard]
-          }
-        ]
-	  },
 	  {
 		path: 'articles/:id',
 		children: [
